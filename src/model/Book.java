@@ -5,18 +5,33 @@
  */
 package model;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 
 
 /**
  *
  * @author sandy
  */
-public class Book {
-
+ @Entity
+public class Book implements Serializable {
+    @Id
+    @Column(unique=true)
+    @GeneratedValue (strategy=GenerationType.IDENTITY)
    private String title;
    private String isbn;
-   private int publisherId;
-   private float price;
+    private float price;
+   @ManyToOne
+   @JoinColumn(name="publisherId")
+   private int publisherId;        
+  
 
     public Book(String title, String isbn, float price) {
         this.title = title;

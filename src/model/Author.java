@@ -5,14 +5,26 @@
  */
 package model;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  *
  * @author sandy
  */
-public class Author {
+@Entity
+public class Author implements Serializable {
+    @Id
+    @Column(unique=true)
+    @GeneratedValue (strategy=GenerationType.IDENTITY)
+     private int author_id ;
     private String nome;
     private String fname;
-    private int author_id ;
+  
 
     public Author() {
         throw new UnsupportedOperationException("Not supported yet."); 
