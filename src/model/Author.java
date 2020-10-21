@@ -4,15 +4,24 @@
  * and open the template in the editor.
  */
 package model;
-
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 /**
  *
  * @author sandy
  */
-public class Author {
+@Entity
+public class Author implements Serializable {
+    @Id
+    @Column(unique=true)
+    @GeneratedValue (strategy=GenerationType.IDENTITY)
+     private int author_id ;
     private String nome;
-    private String fname;
-    private int author_id ;
+    private String fname;;
 
     public Author() {
         throw new UnsupportedOperationException("Not supported yet."); 

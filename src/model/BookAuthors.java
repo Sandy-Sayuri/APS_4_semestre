@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package model;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,29 +16,27 @@ import javax.persistence.ManyToOne;
  *
  * @author sandy
  */
-@Entity
-public class AuthorBD implements Serializable {
-    @Id
-    @Column(unique=true)
-    @GeneratedValue (strategy=GenerationType.IDENTITY)
-     private int author_id ;
-    private String nome;
-    private String fname;
-    }
-    public String getNome() {
-        return nome;
+public class BookAuthors {
+   @Id
+   @Column(unique=true)
+   @GeneratedValue (strategy=GenerationType.IDENTITY)
+   private int BookAuthors_id ;
+   @ManyToOne
+   @JoinColumn(name="author_id")
+   private int author_id ;
+   @ManyToOne
+   @JoinColumn(name="isbn")
+   private String isbn;
+
+    public BookAuthors() {
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public int getBookAuthors_id() {
+        return BookAuthors_id;
     }
 
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setBookAuthors_id(int BookAuthors_id) {
+        this.BookAuthors_id = BookAuthors_id;
     }
 
     public int getAuthor_id() {
@@ -48,5 +47,12 @@ public class AuthorBD implements Serializable {
         this.author_id = author_id;
     }
 
-  
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+   
 }
